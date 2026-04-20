@@ -1,7 +1,5 @@
 # Portfolio // Waleed Mohammad Rahim
 
-![Portfolio Aesthetic](favicon.png)
-
 > **AI Systems Architect & Software Engineer**  
 > Founder building intelligent automation platforms and scalable SaaS infrastructure.
 
