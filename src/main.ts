@@ -20,10 +20,37 @@ import { initTheme } from './ui/theme'
 import { initNav } from './ui/nav'
 import { initMenu } from './ui/menu'
 
+function webglSupported(): boolean {
+  try {
+    const canvas = document.createElement('canvas')
+    return !!(window.WebGLRenderingContext && (canvas.getContext('webgl2') || canvas.getContext('webgl')))
+  } catch {
+    return false
+  }
+}
+
+/** Lazily load the WebGL schematic, but only when it's worth it. */
+function mountSchematic(): void {
+  const viz = document.querySelector<HTMLElement>('[data-viz]')
+  if (!viz) return
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData
+  if (reduceMotion || saveData || !webglSupported()) return // keep the static SVG fallback
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    if (!entries.some((e) => e.isIntersecting)) return
+    obs.disconnect()
+    void import('./three').then((m) => m.initSchematic(viz)).catch(() => {})
+  })
+  observer.observe(viz)
+}
+
 function boot(): void {
   initTheme()
   initNav()
   initMenu()
+  mountSchematic()
 
   const year = document.querySelector('[data-year]')
   if (year) year.textContent = String(new Date().getFullYear())
