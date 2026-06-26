@@ -6,7 +6,7 @@
  * "system schematic" centerpiece. Kept deliberately small: heavy work is
  * code-split and deferred so first paint stays fast.
  */
-import './styles/base.css'
+import './styles/index.css'
 
 // Mark the document as hydrated so CSS can enable JS-only enhancements.
 document.documentElement.classList.add('is-ready')
