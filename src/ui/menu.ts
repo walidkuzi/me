@@ -15,6 +15,7 @@ export function initMenu(): void {
     toggle.setAttribute('aria-expanded', String(open))
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu')
     menu.toggleAttribute('inert', !open)
+    window.dispatchEvent(new CustomEvent('menu:toggle', { detail: open }))
   }
 
   setOpen(false)

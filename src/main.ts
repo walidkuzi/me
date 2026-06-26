@@ -19,6 +19,7 @@ import './styles/index.css'
 import { initTheme } from './ui/theme'
 import { initNav } from './ui/nav'
 import { initMenu } from './ui/menu'
+import { initSmoothScroll } from './motion/lenis'
 
 function webglSupported(): boolean {
   try {
@@ -52,6 +53,7 @@ function boot(): void {
   initTheme()
   initNav()
   initMenu()
+  initSmoothScroll()
   mountSchematic()
 
   const year = document.querySelector('[data-year]')
