@@ -1,0 +1,153 @@
+/* ============================================================
+   COMPONENT ATOMS
+   Buttons, tags, badges, status dot, panels and annotation
+   "field" rows. Sharp corners, hairline borders, mono labels —
+   the shared vocabulary every section is assembled from.
+   ============================================================ */
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7em;
+  padding: 0.9em 1.4em;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  background: var(--surface);
+  border: var(--hair) solid var(--line-strong);
+  border-radius: var(--radius);
+  transition: transform var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out),
+    background var(--dur-1) var(--ease-out),
+    color var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-2) var(--ease-out);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-line);
+  box-shadow: var(--glow);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn__arrow {
+  display: inline-block;
+  transition: transform var(--dur-1) var(--ease-out);
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(4px);
+}
+
+.btn--primary {
+  color: var(--accent-ink);
+  background: var(--accent);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.btn--primary:hover {
+  background: color-mix(in srgb, var(--accent) 86%, #fff);
+  box-shadow: 0 0 38px -6px var(--accent-glow);
+}
+
+.btn--ghost {
+  background: transparent;
+}
+
+/* ---- Tags (skills, roles) ---- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.4em 0.7em;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  color: var(--text-dim);
+  background: var(--ink-2);
+  border: var(--hair) solid var(--line);
+  border-radius: var(--radius);
+  white-space: nowrap;
+  transition: color var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out);
+}
+
+.tag:hover {
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+
+/* ---- Badge / status ---- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.35em 0.6em;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-mono);
+  color: var(--accent);
+  border: var(--hair) solid var(--accent-line);
+  border-radius: var(--radius);
+}
+
+.status-dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+}
+
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: inherit;
+  animation: ping 2.6s var(--ease-out) infinite;
+}
+
+@keyframes ping {
+  0% { transform: scale(1); opacity: 0.7; }
+  70%, 100% { transform: scale(3.2); opacity: 0; }
+}
+
+/* ---- Panels ---- */
+.panel {
+  background: var(--surface);
+  border: var(--hair) solid var(--line);
+  border-radius: var(--radius);
+}
+
+/* ---- Annotation field rows (key → value) ---- */
+.field {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: baseline;
+  padding-block: 0.6em;
+  border-bottom: var(--hair) dashed var(--line);
+}
+
+.field__key {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-mono);
+  color: var(--text-faint);
+  min-width: 6.5rem;
+}
+
+.field__val {
+  color: var(--text);
+}
