@@ -1,3 +1,4 @@
 /* Style entry — import order matters (tokens first, then reset). */
 @import './tokens.css';
 @import './base.css';
+@import './typography.css';

@@ -9,7 +9,7 @@
   /* ---- Type families ---- */
   --font-display: 'Space Grotesk Variable', 'Space Grotesk', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
-  --font-body: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-body: 'Geist Sans', system-ui, -apple-system, sans-serif;
 
   /* ---- Fluid type scale (min .. max) ---- */
   --fs-micro: clamp(0.625rem, 0.6rem + 0.12vw, 0.6875rem);  /* 10 → 11  ruler ticks   */
