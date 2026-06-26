@@ -41,8 +41,14 @@ export function initNav(): void {
       (entries) => {
         for (const entry of entries) {
           if (!entry.isIntersecting) continue
-          links.forEach((l) => l.classList.remove('is-active'))
-          byId.get(entry.target.id)?.forEach((l) => l.classList.add('is-active'))
+          links.forEach((l) => {
+            l.classList.remove('is-active')
+            l.removeAttribute('aria-current')
+          })
+          byId.get(entry.target.id)?.forEach((l) => {
+            l.classList.add('is-active')
+            l.setAttribute('aria-current', 'true')
+          })
         }
       },
       { rootMargin: '-45% 0px -50% 0px' },

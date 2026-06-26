@@ -90,7 +90,7 @@
 
   --text: #c9d4e3;
   --text-dim: #8896ab;
-  --text-faint: #5a6678;                    /* annotations, ticks */
+  --text-faint: #7a8898;                    /* annotations, ticks (AA-tuned) */
 
   --accent: #34e5c8;                        /* signal teal */
   --accent-2: #6ea8ff;                      /* blueprint blue (data/links) */
@@ -125,7 +125,7 @@
 
   --text: #16202e;
   --text-dim: #475467;
-  --text-faint: #8190a3;
+  --text-faint: #5e6b80;
 
   --accent: #0e8f7e;
   --accent-2: #2f6df0;
