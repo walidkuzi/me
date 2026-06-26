@@ -1,16 +1,26 @@
 import * as THREE from 'three'
+import { nodeVertex, nodeFragment, edgeVertex, edgeFragment } from './shaders'
 
 /**
  * Builds the "system schematic": a cloud of nodes connected to their nearest
  * neighbours, like an abstract orchestration graph. Node 0 is the hub at the
- * centre. Geometry carries per-node size/seed attributes so the shader pass can
- * animate and highlight individual nodes without rebuilding buffers.
+ * centre. Geometry carries per-node size/seed/index attributes so the shader
+ * pass can animate and highlight individual nodes without rebuilding buffers.
  */
+export interface GraphUniforms {
+  uTime: { value: number }
+  uColor: { value: THREE.Color }
+  uColorHot: { value: THREE.Color }
+  uPixelRatio: { value: number }
+  uHighlight: { value: number }
+}
+
 export interface NodeGraph {
   group: THREE.Group
   points: THREE.Points
   lines: THREE.LineSegments
   positions: Float32Array
+  uniforms: GraphUniforms
   count: number
   edgeCount: number
   dispose(): void
@@ -55,27 +65,38 @@ function buildEdges(pos: Float32Array, n: number, k: number): Uint16Array {
   return Uint16Array.from(out)
 }
 
-export function buildNodeGraph(nodeCount = 64, neighbours = 3): NodeGraph {
+export function buildNodeGraph(nodeCount = 64, neighbours = 3, pixelRatio = 1): NodeGraph {
   const positions = buildPositions(nodeCount)
   const edges = buildEdges(positions, nodeCount, neighbours)
+
+  const uniforms: GraphUniforms = {
+    uTime: { value: 0 },
+    uColor: { value: new THREE.Color(0x34e5c8) },
+    uColorHot: { value: new THREE.Color(0xeafff8) },
+    uPixelRatio: { value: pixelRatio },
+    uHighlight: { value: -1 },
+  }
 
   // ---- Nodes ----
   const sizes = new Float32Array(nodeCount)
   const seeds = new Float32Array(nodeCount)
+  const indices = new Float32Array(nodeCount)
   for (let i = 0; i < nodeCount; i++) {
-    sizes[i] = i === 0 ? 2.4 : 0.7 + Math.random() * 0.9
+    sizes[i] = i === 0 ? 2.6 : 0.7 + Math.random() * 0.9
     seeds[i] = Math.random() * Math.PI * 2
+    indices[i] = i
   }
 
   const pointGeo = new THREE.BufferGeometry()
   pointGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3))
   pointGeo.setAttribute('aSize', new THREE.BufferAttribute(sizes, 1))
   pointGeo.setAttribute('aSeed', new THREE.BufferAttribute(seeds, 1))
+  pointGeo.setAttribute('aIndex', new THREE.BufferAttribute(indices, 1))
 
-  const pointMat = new THREE.PointsMaterial({
-    color: 0x34e5c8,
-    size: 0.11,
-    sizeAttenuation: true,
+  const pointMat = new THREE.ShaderMaterial({
+    uniforms: { ...uniforms, uSize: { value: 30 } },
+    vertexShader: nodeVertex,
+    fragmentShader: nodeFragment,
     transparent: true,
     depthWrite: false,
   })
@@ -92,10 +113,11 @@ export function buildNodeGraph(nodeCount = 64, neighbours = 3): NodeGraph {
   const lineGeo = new THREE.BufferGeometry()
   lineGeo.setAttribute('position', new THREE.BufferAttribute(edgePositions, 3))
 
-  const lineMat = new THREE.LineBasicMaterial({
-    color: 0x34e5c8,
+  const lineMat = new THREE.ShaderMaterial({
+    uniforms: { ...uniforms, uOpacity: { value: 0.26 } },
+    vertexShader: edgeVertex,
+    fragmentShader: edgeFragment,
     transparent: true,
-    opacity: 0.18,
     depthWrite: false,
   })
   const lines = new THREE.LineSegments(lineGeo, lineMat)
@@ -108,6 +130,7 @@ export function buildNodeGraph(nodeCount = 64, neighbours = 3): NodeGraph {
     points,
     lines,
     positions,
+    uniforms,
     count: nodeCount,
     edgeCount: edges.length / 2,
     dispose() {
