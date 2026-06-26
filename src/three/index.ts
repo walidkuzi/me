@@ -1,6 +1,7 @@
 import { createStage } from './scene'
 import { buildNodeGraph } from './nodegraph'
 import { createInteraction } from './interaction'
+import { attachPerf } from './perf'
 
 /**
  * Entry point for the hero "system schematic". Lazily imported by main.ts only
@@ -38,6 +39,7 @@ export async function initSchematic(mount: HTMLElement): Promise<void> {
 
   annotate(mount, graph.count, graph.edgeCount)
 
+  attachPerf(stage)
   stage.start()
   document.documentElement.classList.add('webgl-on')
 }

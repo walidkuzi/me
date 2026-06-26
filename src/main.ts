@@ -36,7 +36,9 @@ function mountSchematic(): void {
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData
-  if (reduceMotion || saveData || !webglSupported()) return // keep the static SVG fallback
+  const smallTouch = window.matchMedia('(pointer: coarse)').matches && window.innerWidth < 640
+  // Keep the static SVG fallback when motion/WebGL aren't appropriate.
+  if (reduceMotion || saveData || smallTouch || !webglSupported()) return
 
   const observer = new IntersectionObserver((entries, obs) => {
     if (!entries.some((e) => e.isIntersecting)) return
