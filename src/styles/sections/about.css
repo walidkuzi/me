@@ -1,0 +1,96 @@
+/* ============================================================
+   ABOUT — narrative + stat lattice
+   ============================================================ */
+
+.about__body {
+  font-size: var(--fs-md);
+  color: var(--text-dim);
+  gap: var(--space-lg);
+}
+
+.about__body strong {
+  color: var(--text);
+}
+
+.about__points {
+  margin-top: var(--space-xl);
+  display: grid;
+  gap: 0;
+  font-size: var(--fs-sm);
+}
+
+.about__points li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9em;
+  padding: 0.85em 0;
+  color: var(--text-dim);
+  border-top: var(--hair) dashed var(--line);
+}
+
+.about__points li:last-child {
+  border-bottom: var(--hair) dashed var(--line);
+}
+
+.about__points li::before {
+  content: '→';
+  color: var(--accent);
+}
+
+/* ---- Stats: 2×2 hairline lattice ---- */
+.about__aside {
+  display: grid;
+  gap: var(--space-lg);
+  align-content: start;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--hair);
+  background: var(--line);
+  border: var(--hair) solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.stat {
+  display: grid;
+  gap: var(--space-xs);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--surface);
+  transition: background var(--dur-1) var(--ease-out);
+}
+
+.stat:hover {
+  background: var(--surface-2);
+}
+
+.stat__num {
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  font-weight: 420;
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat__label {
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-mono);
+  color: var(--text-faint);
+}
+
+.about__meta {
+  padding: var(--space-md) var(--space-lg);
+}
+
+.about__meta .field:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.about__meta .field:first-child {
+  padding-top: 0;
+}
