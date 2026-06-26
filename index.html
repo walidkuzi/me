@@ -27,13 +27,79 @@
   <meta name="twitter:description"
     content="I design the infrastructure layer of AI — orchestration engines, retrieval pipelines, and multi-tenant SaaS platforms." />
   <meta name="twitter:image" content="https://walidkuzi.github.io/me/favicon.png" />
+
+  <!-- Set theme before first paint to avoid a flash. -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { /* keep default */ }
+    })();
+  </script>
 </head>
 
 <body>
-  <!-- Sections are authored as semantic HTML and progressively enhanced by src/main.ts -->
-  <main id="app" class="container">
-    <p class="mono" style="padding:40vh 0">Portfolio v2 // Blueprint build in progress.</p>
+  <a class="skip-link" href="#hero">Skip to content</a>
+
+  <!-- ====================== NAVIGATION ====================== -->
+  <header class="nav" data-nav>
+    <div class="nav__inner container">
+      <a class="nav__logo mono" href="#hero" aria-label="Waleed Rahim — home">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="nav__logo-text">WALEED<span class="t-faint">.RAHIM</span></span>
+      </a>
+
+      <nav class="nav__links mono" aria-label="Primary">
+        <a href="#about"><i class="nav__idx">01</i>About</a>
+        <a href="#stack"><i class="nav__idx">02</i>Stack</a>
+        <a href="#work"><i class="nav__idx">03</i>Work</a>
+        <a href="#contact"><i class="nav__idx">04</i>Contact</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="nav__theme" data-theme-toggle type="button" aria-label="Toggle colour theme">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2" />
+            <path d="M12 2v2.6M12 19.4V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.6M19.4 12H22M4.2 19.8 6 18M18 6l1.8-1.8" stroke-linecap="round" />
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <path d="M20 14.2A8 8 0 1 1 9.8 4 6.4 6.4 0 0 0 20 14.2Z" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <button class="nav__burger" data-menu-toggle type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav__progress" data-progress aria-hidden="true"></div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="menu" id="menu" data-menu>
+    <nav class="menu__list mono container" aria-label="Mobile">
+      <a href="#about"><i class="nav__idx">01</i>About<span class="menu__open">open</span></a>
+      <a href="#stack"><i class="nav__idx">02</i>Stack<span class="menu__open">open</span></a>
+      <a href="#work"><i class="nav__idx">03</i>Work<span class="menu__open">open</span></a>
+      <a href="#contact"><i class="nav__idx">04</i>Contact<span class="menu__open">open</span></a>
+    </nav>
+  </div>
+
+  <!-- ====================== CONTENT ====================== -->
+  <main id="content">
+    <!-- sections are added progressively -->
   </main>
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="mono t-faint">© <span data-year>2026</span> Waleed Mohammad Rahim</span>
+      <span class="mono t-faint">Designed &amp; built in Istanbul · Blueprint v2</span>
+    </div>
+  </footer>
 
   <script type="module" src="/src/main.ts"></script>
 </body>

@@ -5,3 +5,6 @@
 @import './layout.css';
 @import './background.css';
 @import './components.css';
+
+/* Sections */
+@import './sections/nav.css';
