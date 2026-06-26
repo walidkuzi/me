@@ -1,5 +1,6 @@
 import { createStage } from './scene'
 import { buildNodeGraph } from './nodegraph'
+import { createInteraction } from './interaction'
 
 /**
  * Entry point for the hero "system schematic". Lazily imported by main.ts only
@@ -23,10 +24,16 @@ export async function initSchematic(mount: HTMLElement): Promise<void> {
   applyThemeColor()
   window.addEventListener('themechange', applyThemeColor)
 
+  const label = document.createElement('div')
+  label.className = 'viz-label mono'
+  mount.appendChild(label)
+  const interaction = createInteraction(stage, graph, label)
+
   stage.onFrame((dt) => {
     graph.uniforms.uTime.value += dt
     graph.group.rotation.y += dt * 0.14
     graph.group.rotation.x += dt * 0.03
+    interaction.update(dt)
   })
 
   annotate(mount, graph.count, graph.edgeCount)

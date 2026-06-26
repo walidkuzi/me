@@ -107,6 +107,31 @@
   height: 100% !important;
 }
 
+/* Floating mono label for the hovered node */
+.viz-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 0.3em 0.5em;
+  font-size: var(--fs-micro);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--ink) 82%, transparent);
+  border: var(--hair) solid var(--accent-line);
+  border-radius: var(--radius);
+  pointer-events: none;
+  opacity: 0;
+  transform-origin: 0 0;
+  transition: opacity var(--dur-1) var(--ease-out);
+  margin: 10px 0 0 12px;
+}
+
+.viz-label.is-on {
+  opacity: 1;
+}
+
 .hero__schematic {
   width: min(82%, 320px);
   height: auto;
