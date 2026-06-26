@@ -10,7 +10,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host",
-    "cv": "typst compile cv/cv.typ public/Waleed-Rahim-CV.pdf"
+    "cv": "typst compile --font-path cv/fonts cv/cv.typ public/Waleed-Rahim-CV.pdf"
   },
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
