@@ -32,10 +32,12 @@
 
 .hero__title {
   margin-top: var(--space-lg);
-  font-size: var(--fs-display);
+  max-width: 15ch;
+  font-size: clamp(2.5rem, 1.4rem + 5vw, 5rem);
   font-weight: 420;
-  line-height: 1.02;
+  line-height: 1.04;
   letter-spacing: var(--tracking-tighter);
+  text-wrap: balance;
 }
 
 .hero__title em {
