@@ -23,7 +23,7 @@
   gap: var(--space-md);
   padding: clamp(1.25rem, 2.2vw, 1.75rem);
   background: var(--surface);
-  transition: background var(--dur-2) var(--ease-out);
+  transition: background var(--dur-2) var(--ease-out), transform var(--dur-1) var(--ease-out);
 }
 
 /* Accent rule that draws across the top edge on hover */
