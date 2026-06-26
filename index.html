@@ -90,7 +90,99 @@
 
   <!-- ====================== CONTENT ====================== -->
   <main id="content">
-    <!-- sections are added progressively -->
+
+    <!-- ====================== HERO ====================== -->
+    <section class="hero" id="hero">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="hero__eyebrow label" data-reveal>
+            <span class="status-dot" aria-hidden="true"></span>
+            Available for select work
+            <span class="hero__coord">// 41.0°N 28.9°E · Istanbul</span>
+          </p>
+
+          <h1 class="hero__title display" data-reveal>
+            I architect the<br />
+            infrastructure layer<br />
+            of <em>intelligence</em>.
+          </h1>
+
+          <p class="hero__lead measure" data-reveal>
+            I'm <strong>Waleed Rahim</strong> — a software engineer and founder building the
+            platforms, orchestration engines, and retrieval architectures that make large
+            language models do useful work inside real businesses.
+          </p>
+
+          <ul class="hero__roles cluster" aria-label="Roles" data-reveal>
+            <li class="tag">AI Systems Architect</li>
+            <li class="tag">Software Engineer</li>
+            <li class="tag">Founder</li>
+          </ul>
+
+          <div class="hero__cta cluster" data-reveal>
+            <a class="btn btn--primary" href="#work">
+              View selected work <span class="btn__arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="btn btn--ghost" href="/me/Waleed-Rahim-CV.pdf" download>
+              Download CV <span class="btn__arrow" aria-hidden="true">↓</span>
+            </a>
+            <a class="btn btn--ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+
+        <aside class="hero__viz corner-marks" data-reveal aria-hidden="true">
+          <div class="hero__viz-bar mono">
+            <span>FIG.01</span>
+            <span class="t-accent">ORCHESTRATION_GRAPH</span>
+          </div>
+
+          <div class="hero__canvas" data-viz>
+            <!-- Static schematic: shown until/unless the WebGL scene takes over -->
+            <svg class="hero__schematic" viewBox="0 0 360 360" role="img"
+              aria-label="Abstract orchestration graph">
+              <g class="sch-edge">
+                <line x1="44" y1="92" x2="180" y2="180" />
+                <line x1="44" y1="180" x2="180" y2="180" />
+                <line x1="44" y1="268" x2="180" y2="180" />
+                <line x1="316" y1="92" x2="180" y2="180" />
+                <line x1="316" y1="180" x2="180" y2="180" />
+                <line x1="316" y1="268" x2="180" y2="180" />
+              </g>
+              <g class="sch-edge sch-edge--live">
+                <line x1="180" y1="180" x2="180" y2="64" />
+                <line x1="180" y1="180" x2="180" y2="296" />
+              </g>
+              <g class="sch-node">
+                <circle cx="44" cy="92" r="6" />
+                <circle cx="44" cy="180" r="6" />
+                <circle cx="44" cy="268" r="6" />
+                <circle cx="316" cy="92" r="6" />
+                <circle cx="316" cy="180" r="6" />
+                <circle cx="316" cy="268" r="6" />
+              </g>
+              <g class="sch-node sch-node--mem">
+                <circle cx="180" cy="64" r="8" />
+                <circle cx="180" cy="296" r="8" />
+              </g>
+              <circle class="sch-hub" cx="180" cy="180" r="14" />
+              <circle class="sch-hub-ring" cx="180" cy="180" r="22" />
+            </svg>
+          </div>
+
+          <div class="hero__viz-bar hero__viz-bar--foot mono">
+            <span>NODES·64</span>
+            <span>EDGES·112</span>
+            <span class="t-accent">RT·60FPS</span>
+          </div>
+        </aside>
+      </div>
+
+      <a class="hero__scroll mono" href="#about" aria-label="Scroll to about">
+        <span>SCROLL</span>
+        <span class="hero__scroll-rail" aria-hidden="true"></span>
+      </a>
+    </section>
+
   </main>
 
   <!-- ====================== FOOTER ====================== -->
