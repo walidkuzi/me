@@ -8,6 +8,9 @@ export function initMenu(): void {
   const menu = document.querySelector<HTMLElement>('#menu')
   if (!toggle || !menu) return
 
+  // Regions behind the menu — made inert while it's open so focus stays in it.
+  const background = [document.getElementById('content'), document.querySelector('footer')]
+
   const isOpen = () => document.documentElement.classList.contains('menu-open')
 
   const setOpen = (open: boolean): void => {
@@ -15,6 +18,7 @@ export function initMenu(): void {
     toggle.setAttribute('aria-expanded', String(open))
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu')
     menu.toggleAttribute('inert', !open)
+    background.forEach((el) => el?.toggleAttribute('inert', open))
     window.dispatchEvent(new CustomEvent('menu:toggle', { detail: open }))
   }
 
