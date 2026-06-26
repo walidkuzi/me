@@ -1,0 +1,112 @@
+/* ============================================================
+   BACKGROUND — education + language meters
+   ============================================================ */
+
+.bg-col__kicker {
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-md);
+  border-bottom: var(--hair) solid var(--line);
+  color: var(--accent);
+}
+
+/* ---- Education ---- */
+.edu {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.edu__date {
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+.edu__title {
+  margin-top: 0.5em;
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight);
+}
+
+.edu__org {
+  margin-top: 0.3em;
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+}
+
+.edu__desc {
+  margin-top: var(--space-sm);
+  max-width: 48ch;
+  color: var(--text-dim);
+}
+
+/* ---- Languages ---- */
+.langs {
+  display: grid;
+  gap: 0;
+}
+
+.lang {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 0.95em 0;
+  border-bottom: var(--hair) dashed var(--line);
+}
+
+.lang:first-child {
+  border-top: var(--hair) dashed var(--line);
+}
+
+.lang__name {
+  font-size: var(--fs-md);
+  color: var(--text);
+}
+
+.lang__meter {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.lang__meter i {
+  width: 22px;
+  height: 4px;
+  background: var(--line-strong);
+  border-radius: 1px;
+  transition: background var(--dur-2) var(--ease-out);
+}
+
+.lang__meter[data-level='1'] i:nth-child(-n + 1),
+.lang__meter[data-level='2'] i:nth-child(-n + 2),
+.lang__meter[data-level='3'] i:nth-child(-n + 3),
+.lang__meter[data-level='4'] i:nth-child(-n + 4) {
+  background: var(--accent);
+}
+
+.lang__lvl {
+  min-width: 6.5rem;
+  text-align: right;
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+@media (max-width: 520px) {
+  .lang {
+    grid-template-columns: 1fr auto;
+    row-gap: 0.5rem;
+  }
+
+  .lang__lvl {
+    grid-column: 2;
+    text-align: right;
+  }
+
+  .lang__meter {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+}
