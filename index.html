@@ -28,15 +28,17 @@
     content="I design the infrastructure layer of AI — orchestration engines, retrieval pipelines, and multi-tenant SaaS platforms." />
   <meta name="twitter:image" content="https://walidkuzi.github.io/me/favicon.png" />
 
-  <!-- Set theme before first paint to avoid a flash. -->
+  <!-- Set theme + mark JS before first paint (no flash; reveals pre-hide only with .has-js). -->
   <script>
     (function () {
+      var d = document.documentElement;
+      d.classList.add('has-js');
       try {
         var t = localStorage.getItem('theme');
         if (t !== 'light' && t !== 'dark') {
           t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
         }
-        document.documentElement.setAttribute('data-theme', t);
+        d.setAttribute('data-theme', t);
       } catch (e) { /* keep default */ }
     })();
   </script>
