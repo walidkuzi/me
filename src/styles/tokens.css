@@ -1,0 +1,144 @@
+/* ============================================================
+   DESIGN TOKENS — "Blueprint / Schematic"
+   A drafting-table system: ink grounds, hairline structure,
+   one signal accent, monospace coordinates. Sharp corners,
+   measured spacing, generous negative space.
+   ============================================================ */
+
+:root {
+  /* ---- Type families ---- */
+  --font-display: 'Space Grotesk Variable', 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+  --font-body: 'Geist Sans', system-ui, -apple-system, sans-serif;
+
+  /* ---- Fluid type scale (min .. max) ---- */
+  --fs-micro: clamp(0.625rem, 0.6rem + 0.12vw, 0.6875rem);  /* 10 → 11  ruler ticks   */
+  --fs-mono: clamp(0.6875rem, 0.66rem + 0.14vw, 0.75rem);   /* 11 → 12  labels        */
+  --fs-sm: clamp(0.8125rem, 0.79rem + 0.16vw, 0.875rem);    /* 13 → 14                */
+  --fs-base: clamp(1rem, 0.97rem + 0.18vw, 1.0625rem);      /* 16 → 17  body          */
+  --fs-md: clamp(1.125rem, 1.06rem + 0.4vw, 1.3125rem);     /* 18 → 21                */
+  --fs-lg: clamp(1.375rem, 1.25rem + 0.7vw, 1.75rem);       /* 22 → 28                */
+  --fs-xl: clamp(1.75rem, 1.45rem + 1.6vw, 2.75rem);        /* 28 → 44  small titles  */
+  --fs-2xl: clamp(2.25rem, 1.7rem + 2.9vw, 3.5rem);         /* 36 → 56  section titles */
+  --fs-3xl: clamp(2.75rem, 1.9rem + 4.4vw, 4.75rem);        /* 44 → 76                */
+  --fs-display: clamp(3rem, 1.6rem + 7vw, 7rem);            /* 48 → 112 hero          */
+
+  --lh-tight: 1;
+  --lh-snug: 1.15;
+  --lh-body: 1.65;
+  --tracking-mono: 0.16em;     /* uppercase mono labels  */
+  --tracking-tight: -0.02em;   /* display headings       */
+  --tracking-tighter: -0.035em;
+
+  /* ---- Spacing (8px rhythm) ---- */
+  --space-2xs: 0.25rem;  /* 4  */
+  --space-xs: 0.5rem;    /* 8  */
+  --space-sm: 0.75rem;   /* 12 */
+  --space-md: 1rem;      /* 16 */
+  --space-lg: 1.5rem;    /* 24 */
+  --space-xl: 2.5rem;    /* 40 */
+  --space-2xl: 4rem;     /* 64 */
+  --space-3xl: 6rem;     /* 96 */
+  --section-y: clamp(4.5rem, 11vh, 9rem);
+
+  /* ---- Layout ---- */
+  --container: 1280px;
+  --measure: 62ch;                          /* readable text width */
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --nav-h: 4.25rem;
+
+  /* ---- Structure ---- */
+  --hair: 1px;
+  --radius: 2px;          /* blueprint corners are nearly square */
+  --radius-lg: 4px;
+  --grid-cell: 80px;      /* background graph-paper module */
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-draft: cubic-bezier(0.16, 1, 0.3, 1);  /* "draws in" feel */
+  --dur-1: 0.18s;
+  --dur-2: 0.34s;
+  --dur-3: 0.6s;
+  --dur-4: 1s;
+
+  /* ---- Z layers ---- */
+  --z-bg: 0;
+  --z-canvas: 1;
+  --z-content: 2;
+  --z-nav: 50;
+  --z-menu: 60;
+  --z-overlay: 80;
+
+  color-scheme: dark;
+}
+
+/* ============================================================
+   DARK — primary ("ink on a backlit drafting table")
+   ============================================================ */
+:root[data-theme='dark'] {
+  --ink: #0b0e14;
+  --ink-2: #0e121a;
+  --surface: #11151f;
+  --surface-2: #151b27;
+  --surface-3: #1a2230;
+
+  --line: #1e2a3a;                          /* structural hairlines */
+  --line-strong: #2b3a4f;
+  --line-soft: rgba(120, 140, 170, 0.1);
+  --line-grid: rgba(120, 140, 170, 0.055);  /* background graph paper */
+
+  --text: #c9d4e3;
+  --text-dim: #8896ab;
+  --text-faint: #7a8898;                    /* annotations, ticks (AA-tuned) */
+
+  --accent: #34e5c8;                        /* signal teal */
+  --accent-2: #6ea8ff;                      /* blueprint blue (data/links) */
+  --accent-ink: #04130f;                    /* text on accent fills */
+  --accent-glow: rgba(52, 229, 200, 0.14);
+  --accent-soft: rgba(52, 229, 200, 0.08);
+  --accent-line: rgba(52, 229, 200, 0.35);
+
+  --warn: #f0b341;                          /* dimension/measure marks (rare) */
+
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.02), 0 12px 40px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 48px -12px var(--accent-glow);
+  --noise-opacity: 0.028;
+
+  color-scheme: dark;
+}
+
+/* ============================================================
+   LIGHT — "draft on paper"
+   ============================================================ */
+:root[data-theme='light'] {
+  --ink: #e9ecf1;
+  --ink-2: #eef1f5;
+  --surface: #ffffff;
+  --surface-2: #f5f7fa;
+  --surface-3: #eceff4;
+
+  --line: #c2cbd8;
+  --line-strong: #9aa7b8;
+  --line-soft: rgba(40, 60, 90, 0.12);
+  --line-grid: rgba(40, 60, 90, 0.06);
+
+  --text: #16202e;
+  --text-dim: #475467;
+  --text-faint: #5e6b80;
+
+  --accent: #0e8f7e;
+  --accent-2: #2f6df0;
+  --accent-ink: #ffffff;
+  --accent-glow: rgba(14, 143, 126, 0.16);
+  --accent-soft: rgba(14, 143, 126, 0.07);
+  --accent-line: rgba(14, 143, 126, 0.4);
+
+  --warn: #b9761a;
+
+  --shadow: 0 1px 2px rgba(20, 40, 70, 0.06), 0 16px 40px rgba(20, 40, 70, 0.08);
+  --glow: 0 0 40px -16px var(--accent-glow);
+  --noise-opacity: 0.02;
+
+  color-scheme: light;
+}

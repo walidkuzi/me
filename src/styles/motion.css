@@ -1,0 +1,22 @@
+/* ============================================================
+   MOTION — scroll-reveal initial states
+   Only applied when JS is present (.has-js, set before paint) so
+   content is never hidden if the bundle fails to load.
+   ============================================================ */
+
+.has-js [data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.has-js [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .has-js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

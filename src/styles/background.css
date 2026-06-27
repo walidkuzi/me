@@ -1,0 +1,77 @@
+/* ============================================================
+   AMBIENT BACKGROUND — the drafting table
+   Fixed graph-paper grid + fine noise, masked to fade at the
+   edges. Plus reusable corner "crosshair" marks. All decorative
+   and pointer-events:none so they never intercept input.
+   ============================================================ */
+
+/* Graph-paper grid */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-bg);
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--line-grid) var(--hair), transparent var(--hair)),
+    linear-gradient(90deg, var(--line-grid) var(--hair), transparent var(--hair));
+  background-size: var(--grid-cell) var(--grid-cell);
+  -webkit-mask-image: radial-gradient(ellipse 120% 90% at 50% 24%, #000 28%, transparent 80%);
+  mask-image: radial-gradient(ellipse 120% 90% at 50% 24%, #000 28%, transparent 80%);
+  transition: opacity var(--dur-2) var(--ease-out);
+}
+
+/* Fine fractal noise for tactile depth */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-bg);
+  pointer-events: none;
+  opacity: var(--noise-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- Crosshair marks ---- */
+
+/* A single "+" registration mark (place manually). */
+.x-mark {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  color: var(--line-strong);
+  background:
+    linear-gradient(currentColor, currentColor) center / 100% var(--hair) no-repeat,
+    linear-gradient(90deg, currentColor, currentColor) center / var(--hair) 100% no-repeat;
+}
+
+.x-mark--accent { color: var(--accent); }
+
+/* Add the four corner crosshairs to any positioned box. */
+.corner-marks {
+  position: relative;
+}
+
+.corner-marks::before,
+.corner-marks::after {
+  content: '';
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  pointer-events: none;
+  color: var(--line-strong);
+  background:
+    linear-gradient(currentColor, currentColor) center / 100% var(--hair) no-repeat,
+    linear-gradient(90deg, currentColor, currentColor) center / var(--hair) 100% no-repeat;
+}
+
+.corner-marks::before {
+  top: -6px;
+  left: -6px;
+}
+
+.corner-marks::after {
+  right: -6px;
+  bottom: -6px;
+}

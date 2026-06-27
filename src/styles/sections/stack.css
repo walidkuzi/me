@@ -1,0 +1,96 @@
+/* ============================================================
+   STACK — edge-to-edge hairline lattice of domain cards
+   ============================================================ */
+
+.section-head--wide .section-title {
+  max-width: 28ch;
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--hair);
+  background: var(--line);
+  border: var(--hair) solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.stack-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: var(--space-md);
+  padding: clamp(1.25rem, 2.2vw, 1.75rem);
+  background: var(--surface);
+  transition: background var(--dur-2) var(--ease-out), transform var(--dur-1) var(--ease-out);
+}
+
+/* Accent rule that draws across the top edge on hover */
+.stack-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform var(--dur-2) var(--ease-draft);
+}
+
+.stack-card:hover {
+  background: var(--surface-2);
+}
+
+.stack-card:hover::before {
+  transform: scaleX(1);
+}
+
+.stack-card__head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.stack-card__idx {
+  font-size: var(--fs-mono);
+  font-weight: 600;
+  color: var(--accent);
+  padding-top: 0.15em;
+}
+
+.stack-card__title {
+  font-size: var(--fs-md);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight);
+}
+
+.stack-card__desc {
+  margin-top: 0.3em;
+  font-size: var(--fs-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+}
+
+.stack-card__tags {
+  align-content: start;
+  gap: 0.4rem;
+}
+
+.stack-card__tags .tag {
+  font-size: var(--fs-micro);
+  padding: 0.32em 0.55em;
+}
+
+@media (max-width: 1024px) {
+  .stack-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .stack-grid {
+    grid-template-columns: 1fr;
+  }
+}
