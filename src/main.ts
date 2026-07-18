@@ -12,7 +12,6 @@ import '@fontsource-variable/space-grotesk/index.css'
 import '@fontsource-variable/jetbrains-mono/index.css'
 import '@fontsource/geist-sans/400.css'
 import '@fontsource/geist-sans/500.css'
-import '@fontsource/geist-sans/600.css'
 
 import './styles/index.css'
 

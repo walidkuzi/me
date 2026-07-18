@@ -2,6 +2,22 @@
    CONTACT — call to action + annotated link rows
    ============================================================ */
 
+.contact {
+  position: relative;
+}
+
+.contact .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Dimmer echo of the hero floor behind the closing headline */
+.contact .dim-floor--dim {
+  bottom: 0;
+  height: 34vh;
+  opacity: 0.65;
+}
+
 .contact .section-head {
   margin-bottom: var(--space-xl);
 }
@@ -36,9 +52,11 @@
   gap: var(--space-sm);
 }
 
-/* ---- Link rows ---- */
+/* ---- Link rows: a floating glass ledger ---- */
 .contact__links {
   display: grid;
+  padding: var(--space-2xs) var(--space-lg);
+  box-shadow: var(--shadow-z2);
 }
 
 .contact-row {
@@ -52,8 +70,8 @@
   transition: padding-left var(--dur-2) var(--ease-out), background var(--dur-1) var(--ease-out);
 }
 
-.contact__links .contact-row:last-child {
-  border-bottom: var(--hair) solid var(--line);
+.contact__links .contact-row:first-child {
+  border-top: 0;
 }
 
 .contact-row__key {

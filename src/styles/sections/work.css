@@ -29,7 +29,7 @@
 }
 
 .tl-date b {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text);
 }
 
@@ -72,6 +72,7 @@
   border-radius: 50%;
   background: var(--surface-3);
   border: 1.5px solid var(--line-strong);
+  box-shadow: var(--shadow-z1);
   z-index: 1;
   transition: border-color var(--dur-1) var(--ease-out);
 }
@@ -91,7 +92,39 @@
   animation: ping 2.6s var(--ease-out) infinite;
 }
 
-/* Body */
+/* Body: a low glass panel that lifts on hover */
+.tl-body {
+  padding: var(--space-md) var(--space-lg);
+  transition: translate var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out);
+}
+
+.tl-item:hover .tl-body {
+  translate: 0 -3px;
+  box-shadow: var(--shadow-z2);
+}
+
+/* Rail draws itself in as the item scrolls into view. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .tl-rail::before {
+      transform-origin: 50% 0;
+      animation: tl-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 90%;
+    }
+  }
+}
+
+@keyframes tl-draw {
+  from {
+    scale: 1 0;
+  }
+
+  to {
+    scale: 1 1;
+  }
+}
+
 .tl-head {
   display: flex;
   flex-wrap: wrap;

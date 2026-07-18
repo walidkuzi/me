@@ -9,21 +9,16 @@
 .stack-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--hair);
-  background: var(--line);
-  border: var(--hair) solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
+  gap: var(--space-sm);
 }
 
 .stack-card {
-  position: relative;
   display: grid;
   grid-template-rows: auto 1fr;
   gap: var(--space-md);
   padding: clamp(1.25rem, 2.2vw, 1.75rem);
-  background: var(--surface);
-  transition: background var(--dur-2) var(--ease-out), transform var(--dur-1) var(--ease-out);
+  transform-style: preserve-3d;
+  transition: box-shadow var(--dur-2) var(--ease-out), transform var(--dur-1) var(--ease-out);
 }
 
 /* Accent rule that draws across the top edge on hover */
@@ -32,6 +27,7 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 2px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   background: var(--accent);
   transform: scaleX(0);
   transform-origin: 0 50%;
@@ -39,11 +35,29 @@
 }
 
 .stack-card:hover {
-  background: var(--surface-2);
+  box-shadow: var(--shadow-z2);
 }
 
 .stack-card:hover::before {
   transform: scaleX(1);
+}
+
+/* Inner layers float at different depths — the pointer tilt
+   turns this into true intra-card parallax. */
+.stack-card__head {
+  transform-style: preserve-3d;
+}
+
+.stack-card__idx {
+  transform: translateZ(26px);
+}
+
+.stack-card__head > div {
+  transform: translateZ(14px);
+}
+
+.stack-card__tags {
+  transform: translateZ(6px);
 }
 
 .stack-card__head {
@@ -54,7 +68,7 @@
 
 .stack-card__idx {
   font-size: var(--fs-mono);
-  font-weight: 600;
+  font-weight: 500;
   color: var(--accent);
   padding-top: 0.15em;
 }

@@ -12,6 +12,8 @@
 }
 
 .hero__inner {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   align-items: center;
@@ -62,16 +64,47 @@
   gap: var(--space-sm);
 }
 
-/* ---- Visualisation panel ---- */
+/* ---- Visualisation panel: a tilted stack of glass sheets ---- */
+.hero__stage {
+  position: relative;
+  transform: perspective(var(--persp)) rotateY(-6deg) rotateX(2deg);
+  transition: transform var(--dur-4) var(--ease-draft);
+}
+
+.hero__stage:hover {
+  transform: perspective(var(--persp)) rotateY(0deg) rotateX(0deg);
+}
+
+/* Ghost sheets stacked behind the live panel */
+.hero__stage::before,
+.hero__stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: var(--hair) solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--glass);
+  pointer-events: none;
+}
+
+.hero__stage::before {
+  translate: -16px 16px;
+  opacity: 0.45;
+}
+
+.hero__stage::after {
+  translate: -32px 32px;
+  opacity: 0.2;
+}
+
 .hero__viz {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  background: color-mix(in srgb, var(--surface) 55%, transparent);
-  border: var(--hair) solid var(--line);
-  border-radius: var(--radius);
+  z-index: 1;
   min-height: 340px;
   aspect-ratio: 1 / 1;
   overflow: hidden;
+  box-shadow: var(--shadow-z2);
 }
 
 .hero__viz-bar {
@@ -218,9 +251,12 @@
     gap: var(--space-2xl);
   }
 
-  .hero__viz {
+  .hero__stage {
     max-width: 440px;
     width: 100%;
+  }
+
+  .hero__viz {
     aspect-ratio: 4 / 3;
   }
 

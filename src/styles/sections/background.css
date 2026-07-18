@@ -12,7 +12,11 @@
 /* ---- Education ---- */
 .edu {
   display: grid;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
+}
+
+.edu__item {
+  padding: var(--space-lg);
 }
 
 .edu__date {
@@ -70,12 +74,14 @@
   gap: 4px;
 }
 
+/* Extruded meter blocks: lit top edge, seated base */
 .lang__meter i {
   width: 22px;
-  height: 4px;
+  height: 5px;
   background: var(--line-strong);
-  border-radius: 1px;
-  transition: background var(--dur-2) var(--ease-out);
+  border-radius: 2px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.28);
+  transition: background var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out);
 }
 
 .lang__meter[data-level='1'] i:nth-child(-n + 1),
@@ -83,6 +89,7 @@
 .lang__meter[data-level='3'] i:nth-child(-n + 3),
 .lang__meter[data-level='4'] i:nth-child(-n + 4) {
   background: var(--accent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 0 10px -2px var(--accent-glow);
 }
 
 .lang__lvl {

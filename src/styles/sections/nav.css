@@ -17,6 +17,7 @@
 .nav--scrolled {
   background: color-mix(in srgb, var(--ink) 82%, transparent);
   border-bottom-color: var(--line);
+  box-shadow: var(--shadow-z1);
 }
 
 .nav__inner {
@@ -32,7 +33,7 @@
   align-items: center;
   gap: 0.65em;
   font-size: var(--fs-sm);
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.1em;
   color: var(--text);
 }
