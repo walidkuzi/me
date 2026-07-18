@@ -164,44 +164,65 @@
         <aside class="hero__viz corner-marks" data-reveal aria-hidden="true">
           <div class="hero__viz-bar mono">
             <span>FIG.01</span>
-            <span class="t-accent">ORCHESTRATION_GRAPH</span>
+            <span class="t-accent">SYSTEM_ISOMETRIC</span>
           </div>
 
           <div class="hero__canvas" data-viz>
-            <!-- Static schematic: shown until/unless the WebGL scene takes over -->
-            <svg class="hero__schematic" viewBox="0 0 360 360" role="img" aria-label="Abstract orchestration graph">
+            <!-- Static isometric schematic: shown until/unless the live scene takes over -->
+            <svg class="hero__schematic" viewBox="0 0 360 360" role="img" aria-label="Isometric schematic of an AI system: a wireframe core with orbiting service nodes above a substrate grid">
+              <g class="sch-floor">
+                <line x1="70" y1="312" x2="140" y2="256" />
+                <line x1="135" y1="316" x2="166" y2="257" />
+                <line x1="225" y1="316" x2="194" y2="257" />
+                <line x1="290" y1="312" x2="220" y2="256" />
+                <line x1="130" y1="262" x2="230" y2="262" />
+                <line x1="105" y1="284" x2="255" y2="284" />
+                <line x1="72" y1="310" x2="288" y2="310" />
+              </g>
+
+              <ellipse class="sch-orbit" cx="180" cy="172" rx="148" ry="40" transform="rotate(-16 180 172)" />
+
+              <g class="sch-edge sch-edge--ghost">
+                <polygon points="225,146 135,146 180,224" />
+              </g>
+
               <g class="sch-edge">
-                <line x1="44" y1="92" x2="180" y2="180" />
-                <line x1="44" y1="180" x2="180" y2="180" />
-                <line x1="44" y1="268" x2="180" y2="180" />
-                <line x1="316" y1="92" x2="180" y2="180" />
-                <line x1="316" y1="180" x2="180" y2="180" />
-                <line x1="316" y1="268" x2="180" y2="180" />
+                <polygon points="180,77 262,125 262,220 180,267 98,220 98,125" />
+                <polygon points="180,120 135,198 225,198" />
+                <line x1="180" y1="120" x2="180" y2="77" />
+                <line x1="180" y1="120" x2="98" y2="125" />
+                <line x1="180" y1="120" x2="262" y2="125" />
+                <line x1="135" y1="198" x2="98" y2="125" />
+                <line x1="135" y1="198" x2="98" y2="220" />
+                <line x1="135" y1="198" x2="180" y2="267" />
+                <line x1="225" y1="198" x2="262" y2="125" />
+                <line x1="225" y1="198" x2="262" y2="220" />
+                <line x1="225" y1="198" x2="180" y2="267" />
               </g>
-              <g class="sch-edge sch-edge--live">
-                <line x1="180" y1="180" x2="180" y2="64" />
-                <line x1="180" y1="180" x2="180" y2="296" />
-              </g>
+
               <g class="sch-node">
-                <circle cx="44" cy="92" r="6" />
-                <circle cx="44" cy="180" r="6" />
-                <circle cx="44" cy="268" r="6" />
-                <circle cx="316" cy="92" r="6" />
-                <circle cx="316" cy="180" r="6" />
-                <circle cx="316" cy="268" r="6" />
+                <circle cx="180" cy="77" r="4" />
+                <circle cx="262" cy="125" r="4" />
+                <circle cx="262" cy="220" r="4" />
+                <circle cx="180" cy="267" r="4" />
+                <circle cx="98" cy="220" r="4" />
+                <circle cx="98" cy="125" r="4" />
               </g>
               <g class="sch-node sch-node--mem">
-                <circle cx="180" cy="64" r="8" />
-                <circle cx="180" cy="296" r="8" />
+                <circle cx="38" cy="213" r="6" />
+                <circle cx="322" cy="131" r="6" />
+                <circle cx="230" cy="128" r="5" />
+                <circle cx="130" cy="216" r="5" />
               </g>
-              <circle class="sch-hub" cx="180" cy="180" r="14" />
-              <circle class="sch-hub-ring" cx="180" cy="180" r="22" />
+
+              <circle class="sch-hub" cx="180" cy="172" r="12" />
+              <circle class="sch-hub-ring" cx="180" cy="172" r="20" />
             </svg>
           </div>
 
           <div class="hero__viz-bar hero__viz-bar--foot mono">
-            <span>NODES·64</span>
-            <span>EDGES·112</span>
+            <span>VERTS·26</span>
+            <span>EDGES·58</span>
             <span class="t-accent">RT·60FPS</span>
           </div>
         </aside>

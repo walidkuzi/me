@@ -99,37 +99,12 @@
   min-height: 0;
 }
 
-/* The WebGL canvas (added later) fills this layer. */
+/* The live scene canvas fills this layer. */
 .hero__canvas > canvas {
   position: absolute;
   inset: 0;
   width: 100% !important;
   height: 100% !important;
-}
-
-/* Floating mono label for the hovered node */
-.viz-label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  padding: 0.3em 0.5em;
-  font-size: var(--fs-micro);
-  letter-spacing: 0.06em;
-  white-space: nowrap;
-  color: var(--accent);
-  background: color-mix(in srgb, var(--ink) 82%, transparent);
-  border: var(--hair) solid var(--accent-line);
-  border-radius: var(--radius);
-  pointer-events: none;
-  opacity: 0;
-  transform-origin: 0 0;
-  transition: opacity var(--dur-1) var(--ease-out);
-  margin: 10px 0 0 12px;
-}
-
-.viz-label.is-on {
-  opacity: 1;
 }
 
 .hero__schematic {
@@ -140,18 +115,33 @@
 }
 
 /* When the live scene runs, fade the static schematic out. */
-.webgl-on .hero__schematic {
+.viz-on .hero__schematic {
   opacity: 0;
 }
 
-.sch-edge line {
+.sch-edge line,
+.sch-edge polygon {
+  fill: none;
   stroke: var(--line-strong);
   stroke-width: 1;
 }
 
-.sch-edge--live line {
-  stroke: var(--accent);
-  stroke-width: 1.25;
+.sch-edge--ghost line,
+.sch-edge--ghost polygon {
+  stroke-dasharray: 4 6;
+  opacity: 0.55;
+}
+
+.sch-orbit {
+  fill: none;
+  stroke: var(--accent-line);
+  stroke-width: 1;
+  stroke-dasharray: 2 6;
+}
+
+.sch-floor line {
+  stroke: var(--line);
+  stroke-width: 1;
 }
 
 .sch-node circle {
@@ -176,7 +166,7 @@
   stroke: var(--accent-line);
   stroke-width: 1;
   stroke-dasharray: 3 5;
-  transform-origin: 180px 180px;
+  transform-origin: 180px 172px;
   animation: sch-spin 28s linear infinite;
 }
 

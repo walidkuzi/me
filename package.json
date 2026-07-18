@@ -15,8 +15,7 @@
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@fontsource-variable/space-grotesk": "^5.2.10",
-    "@fontsource/geist-sans": "^5.2.5",
-    "three": "^0.185.0"
+    "@fontsource/geist-sans": "^5.2.5"
   },
   "devDependencies": {
     "@types/three": "^0.185.0",
