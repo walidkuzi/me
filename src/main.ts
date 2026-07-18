@@ -19,7 +19,6 @@ import './styles/index.css'
 import { initTheme } from './ui/theme'
 import { initNav } from './ui/nav'
 import { initMenu } from './ui/menu'
-import { initSmoothScroll } from './motion/lenis'
 import { initReveals } from './motion/reveal'
 import { initMicro } from './motion/micro'
 
@@ -55,8 +54,7 @@ function boot(): void {
   initTheme()
   initNav()
   initMenu()
-  const lenis = initSmoothScroll()
-  initReveals(lenis)
+  initReveals()
   initMicro()
   mountSchematic()
 
