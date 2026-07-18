@@ -9,6 +9,9 @@
   align-items: center;
   padding-top: calc(var(--nav-h) + var(--space-lg));
   padding-bottom: var(--space-2xl);
+  /* The dim-floor bleeds ±12% horizontally; clip it here or mobile
+     viewports expand to fit the overflow. Vertical stays visible. */
+  overflow-x: clip;
 }
 
 .hero__inner {
@@ -256,8 +259,11 @@
     width: 100%;
   }
 
+  /* Width drives the aspect here — a min-height would force an
+     intrinsic width wider than small viewports. */
   .hero__viz {
     aspect-ratio: 4 / 3;
+    min-height: 0;
   }
 
   .hero__scroll {

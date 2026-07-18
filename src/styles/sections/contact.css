@@ -4,6 +4,8 @@
 
 .contact {
   position: relative;
+  /* Clip the dim-floor's horizontal bleed (see hero.css). */
+  overflow-x: clip;
 }
 
 .contact .container {
