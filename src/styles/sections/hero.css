@@ -9,9 +9,14 @@
   align-items: center;
   padding-top: calc(var(--nav-h) + var(--space-lg));
   padding-bottom: var(--space-2xl);
+  /* The dim-floor bleeds ±12% horizontally; clip it here or mobile
+     viewports expand to fit the overflow. Vertical stays visible. */
+  overflow-x: clip;
 }
 
 .hero__inner {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   align-items: center;
@@ -62,16 +67,47 @@
   gap: var(--space-sm);
 }
 
-/* ---- Visualisation panel ---- */
+/* ---- Visualisation panel: a tilted stack of glass sheets ---- */
+.hero__stage {
+  position: relative;
+  transform: perspective(var(--persp)) rotateY(-6deg) rotateX(2deg);
+  transition: transform var(--dur-4) var(--ease-draft);
+}
+
+.hero__stage:hover {
+  transform: perspective(var(--persp)) rotateY(0deg) rotateX(0deg);
+}
+
+/* Ghost sheets stacked behind the live panel */
+.hero__stage::before,
+.hero__stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: var(--hair) solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--glass);
+  pointer-events: none;
+}
+
+.hero__stage::before {
+  translate: -16px 16px;
+  opacity: 0.45;
+}
+
+.hero__stage::after {
+  translate: -32px 32px;
+  opacity: 0.2;
+}
+
 .hero__viz {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  background: color-mix(in srgb, var(--surface) 55%, transparent);
-  border: var(--hair) solid var(--line);
-  border-radius: var(--radius);
+  z-index: 1;
   min-height: 340px;
   aspect-ratio: 1 / 1;
   overflow: hidden;
+  box-shadow: var(--shadow-z2);
 }
 
 .hero__viz-bar {
@@ -99,37 +135,12 @@
   min-height: 0;
 }
 
-/* The WebGL canvas (added later) fills this layer. */
+/* The live scene canvas fills this layer. */
 .hero__canvas > canvas {
   position: absolute;
   inset: 0;
   width: 100% !important;
   height: 100% !important;
-}
-
-/* Floating mono label for the hovered node */
-.viz-label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  padding: 0.3em 0.5em;
-  font-size: var(--fs-micro);
-  letter-spacing: 0.06em;
-  white-space: nowrap;
-  color: var(--accent);
-  background: color-mix(in srgb, var(--ink) 82%, transparent);
-  border: var(--hair) solid var(--accent-line);
-  border-radius: var(--radius);
-  pointer-events: none;
-  opacity: 0;
-  transform-origin: 0 0;
-  transition: opacity var(--dur-1) var(--ease-out);
-  margin: 10px 0 0 12px;
-}
-
-.viz-label.is-on {
-  opacity: 1;
 }
 
 .hero__schematic {
@@ -140,18 +151,33 @@
 }
 
 /* When the live scene runs, fade the static schematic out. */
-.webgl-on .hero__schematic {
+.viz-on .hero__schematic {
   opacity: 0;
 }
 
-.sch-edge line {
+.sch-edge line,
+.sch-edge polygon {
+  fill: none;
   stroke: var(--line-strong);
   stroke-width: 1;
 }
 
-.sch-edge--live line {
-  stroke: var(--accent);
-  stroke-width: 1.25;
+.sch-edge--ghost line,
+.sch-edge--ghost polygon {
+  stroke-dasharray: 4 6;
+  opacity: 0.55;
+}
+
+.sch-orbit {
+  fill: none;
+  stroke: var(--accent-line);
+  stroke-width: 1;
+  stroke-dasharray: 2 6;
+}
+
+.sch-floor line {
+  stroke: var(--line);
+  stroke-width: 1;
 }
 
 .sch-node circle {
@@ -176,7 +202,7 @@
   stroke: var(--accent-line);
   stroke-width: 1;
   stroke-dasharray: 3 5;
-  transform-origin: 180px 180px;
+  transform-origin: 180px 172px;
   animation: sch-spin 28s linear infinite;
 }
 
@@ -228,10 +254,16 @@
     gap: var(--space-2xl);
   }
 
-  .hero__viz {
+  .hero__stage {
     max-width: 440px;
     width: 100%;
+  }
+
+  /* Width drives the aspect here — a min-height would force an
+     intrinsic width wider than small viewports. */
+  .hero__viz {
     aspect-ratio: 4 / 3;
+    min-height: 0;
   }
 
   .hero__scroll {

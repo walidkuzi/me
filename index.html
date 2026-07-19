@@ -28,7 +28,8 @@
   <meta property="og:image" content="https://walidkuzi.github.io/me/og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Waleed Rahim — AI Systems Architect. I architect the infrastructure layer of intelligence." />
+  <meta property="og:image:alt"
+    content="Waleed Rahim — AI Systems Architect. I architect the infrastructure layer of intelligence." />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -83,22 +84,26 @@
 
       <nav class="nav__links mono" aria-label="Primary">
         <a href="#about"><i class="nav__idx">01</i>About</a>
-        <a href="#stack"><i class="nav__idx">02</i>Stack</a>
-        <a href="#work"><i class="nav__idx">03</i>Work</a>
+        <a href="#work"><i class="nav__idx">02</i>Work</a>
+        <a href="#stack"><i class="nav__idx">03</i>Stack</a>
         <a href="#contact"><i class="nav__idx">04</i>Contact</a>
       </nav>
 
       <div class="nav__actions">
         <button class="nav__theme" data-theme-toggle type="button" aria-label="Toggle colour theme">
-          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+            aria-hidden="true">
             <circle cx="12" cy="12" r="4.2" />
-            <path d="M12 2v2.6M12 19.4V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.6M19.4 12H22M4.2 19.8 6 18M18 6l1.8-1.8" stroke-linecap="round" />
+            <path d="M12 2v2.6M12 19.4V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.6M19.4 12H22M4.2 19.8 6 18M18 6l1.8-1.8"
+              stroke-linecap="round" />
           </svg>
-          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+            aria-hidden="true">
             <path d="M20 14.2A8 8 0 1 1 9.8 4 6.4 6.4 0 0 0 20 14.2Z" stroke-linejoin="round" />
           </svg>
         </button>
-        <button class="nav__burger" data-menu-toggle type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <button class="nav__burger" data-menu-toggle type="button" aria-label="Open menu" aria-expanded="false"
+          aria-controls="menu">
           <span></span><span></span>
         </button>
       </div>
@@ -110,8 +115,8 @@
   <div class="menu" id="menu" data-menu>
     <nav class="menu__list mono container" aria-label="Mobile">
       <a href="#about"><i class="nav__idx">01</i>About<span class="menu__open">open</span></a>
-      <a href="#stack"><i class="nav__idx">02</i>Stack<span class="menu__open">open</span></a>
-      <a href="#work"><i class="nav__idx">03</i>Work<span class="menu__open">open</span></a>
+      <a href="#work"><i class="nav__idx">02</i>Work<span class="menu__open">open</span></a>
+      <a href="#stack"><i class="nav__idx">03</i>Stack<span class="menu__open">open</span></a>
       <a href="#contact"><i class="nav__idx">04</i>Contact<span class="menu__open">open</span></a>
     </nav>
   </div>
@@ -121,6 +126,7 @@
 
     <!-- ====================== HERO ====================== -->
     <section class="hero" id="hero">
+      <div class="dim-floor" aria-hidden="true"></div>
       <div class="container hero__inner">
         <div class="hero__content">
           <p class="hero__eyebrow label" data-reveal>
@@ -136,7 +142,7 @@
           <p class="hero__lead measure" data-reveal>
             I'm <strong>Waleed Rahim</strong> — a software engineer and founder building the
             platforms, orchestration engines, and retrieval architectures that make large
-            language models do useful work inside real businesses.
+            language models do useful work for real businesses.
           </p>
 
           <ul class="hero__roles cluster" aria-label="Roles" data-reveal>
@@ -156,51 +162,73 @@
           </div>
         </div>
 
-        <aside class="hero__viz corner-marks" data-reveal aria-hidden="true">
+        <div class="hero__stage" data-reveal>
+        <aside class="hero__viz glass-panel glass-frost corner-marks" aria-hidden="true">
           <div class="hero__viz-bar mono">
             <span>FIG.01</span>
-            <span class="t-accent">ORCHESTRATION_GRAPH</span>
+            <span class="t-accent">SYSTEM_ISOMETRIC</span>
           </div>
 
           <div class="hero__canvas" data-viz>
-            <!-- Static schematic: shown until/unless the WebGL scene takes over -->
-            <svg class="hero__schematic" viewBox="0 0 360 360" role="img"
-              aria-label="Abstract orchestration graph">
+            <!-- Static isometric schematic: shown until/unless the live scene takes over -->
+            <svg class="hero__schematic" viewBox="0 0 360 360" role="img" aria-label="Isometric schematic of an AI system: a wireframe core with orbiting service nodes above a substrate grid">
+              <g class="sch-floor">
+                <line x1="70" y1="312" x2="140" y2="256" />
+                <line x1="135" y1="316" x2="166" y2="257" />
+                <line x1="225" y1="316" x2="194" y2="257" />
+                <line x1="290" y1="312" x2="220" y2="256" />
+                <line x1="130" y1="262" x2="230" y2="262" />
+                <line x1="105" y1="284" x2="255" y2="284" />
+                <line x1="72" y1="310" x2="288" y2="310" />
+              </g>
+
+              <ellipse class="sch-orbit" cx="180" cy="172" rx="148" ry="40" transform="rotate(-16 180 172)" />
+
+              <g class="sch-edge sch-edge--ghost">
+                <polygon points="225,146 135,146 180,224" />
+              </g>
+
               <g class="sch-edge">
-                <line x1="44" y1="92" x2="180" y2="180" />
-                <line x1="44" y1="180" x2="180" y2="180" />
-                <line x1="44" y1="268" x2="180" y2="180" />
-                <line x1="316" y1="92" x2="180" y2="180" />
-                <line x1="316" y1="180" x2="180" y2="180" />
-                <line x1="316" y1="268" x2="180" y2="180" />
+                <polygon points="180,77 262,125 262,220 180,267 98,220 98,125" />
+                <polygon points="180,120 135,198 225,198" />
+                <line x1="180" y1="120" x2="180" y2="77" />
+                <line x1="180" y1="120" x2="98" y2="125" />
+                <line x1="180" y1="120" x2="262" y2="125" />
+                <line x1="135" y1="198" x2="98" y2="125" />
+                <line x1="135" y1="198" x2="98" y2="220" />
+                <line x1="135" y1="198" x2="180" y2="267" />
+                <line x1="225" y1="198" x2="262" y2="125" />
+                <line x1="225" y1="198" x2="262" y2="220" />
+                <line x1="225" y1="198" x2="180" y2="267" />
               </g>
-              <g class="sch-edge sch-edge--live">
-                <line x1="180" y1="180" x2="180" y2="64" />
-                <line x1="180" y1="180" x2="180" y2="296" />
-              </g>
+
               <g class="sch-node">
-                <circle cx="44" cy="92" r="6" />
-                <circle cx="44" cy="180" r="6" />
-                <circle cx="44" cy="268" r="6" />
-                <circle cx="316" cy="92" r="6" />
-                <circle cx="316" cy="180" r="6" />
-                <circle cx="316" cy="268" r="6" />
+                <circle cx="180" cy="77" r="4" />
+                <circle cx="262" cy="125" r="4" />
+                <circle cx="262" cy="220" r="4" />
+                <circle cx="180" cy="267" r="4" />
+                <circle cx="98" cy="220" r="4" />
+                <circle cx="98" cy="125" r="4" />
               </g>
               <g class="sch-node sch-node--mem">
-                <circle cx="180" cy="64" r="8" />
-                <circle cx="180" cy="296" r="8" />
+                <circle cx="38" cy="213" r="6" />
+                <circle cx="322" cy="131" r="6" />
+                <circle cx="230" cy="128" r="5" />
+                <circle cx="130" cy="216" r="5" />
               </g>
-              <circle class="sch-hub" cx="180" cy="180" r="14" />
-              <circle class="sch-hub-ring" cx="180" cy="180" r="22" />
+
+              <circle class="sch-hub" cx="180" cy="172" r="12" />
+              <circle class="sch-hub-ring" cx="180" cy="172" r="20" />
             </svg>
           </div>
 
           <div class="hero__viz-bar hero__viz-bar--foot mono">
-            <span>NODES·64</span>
-            <span>EDGES·112</span>
+            <span>VERTS·26</span>
+            <span>EDGES·58</span>
             <span class="t-accent">RT·60FPS</span>
           </div>
         </aside>
+        </div>
       </div>
 
       <a class="hero__scroll mono" href="#about" aria-label="Scroll to about">
@@ -227,8 +255,8 @@
               <strong>distributed systems</strong>, and <strong>product strategy</strong>.
             </p>
             <p>
-              I design platforms end-to-end — schema, services, agent orchestration, retrieval
-              pipelines, multi-tenant billing, and the UX that wraps all of it. I lead projects
+              I design platforms end-to-end — schema, services, orchestration,
+              retrieval, billing, and the UX that wraps it. I lead projects
               from zero to one: setting technical direction, coordinating teams, and shipping
               production-grade systems. Most of my current work targets SMB and enterprise
               markets across <strong>MENA</strong>, where I'm building vertical-specialized AI
@@ -245,167 +273,33 @@
 
         <aside class="about__aside" data-reveal>
           <div class="stats">
-            <div class="stat">
+            <div class="stat glass-panel">
               <span class="stat__num display" data-count="7" data-suffix="+">7+</span>
               <span class="stat__label mono">Years building</span>
             </div>
-            <div class="stat">
+            <div class="stat glass-panel">
               <span class="stat__num display" data-count="13" data-suffix="+">13+</span>
               <span class="stat__label mono">Ventures launched</span>
             </div>
-            <div class="stat">
+            <div class="stat glass-panel">
               <span class="stat__num display" data-count="20" data-suffix="+">20+</span>
               <span class="stat__label mono">AI systems shipped</span>
             </div>
-            <div class="stat">
+            <div class="stat glass-panel">
               <span class="stat__num display" data-count="23">23</span>
               <span class="stat__label mono">Years young</span>
             </div>
           </div>
 
-          <div class="about__meta panel">
-            <div class="field"><span class="field__key">Location</span><span class="field__val">Istanbul, Turkey</span></div>
-            <div class="field"><span class="field__key">Focus</span><span class="field__val">AI platforms · MENA</span></div>
-            <div class="field"><span class="field__key">Status</span><span class="field__val t-accent">Available for select work</span></div>
+          <div class="about__meta glass-panel" data-tilt>
+            <div class="field"><span class="field__key">Location</span><span class="field__val">Istanbul, Turkey</span>
+            </div>
+            <div class="field"><span class="field__key">Focus</span><span class="field__val">AI platforms · MENA</span>
+            </div>
+            <div class="field"><span class="field__key">Status</span><span class="field__val t-accent">Available for
+                select work</span></div>
           </div>
         </aside>
-      </div>
-    </section>
-
-    <!-- ====================== STACK ====================== -->
-    <section class="section stack" id="stack">
-      <div class="container">
-        <header class="section-head section-head--wide" data-reveal>
-          <div class="section-head__row">
-            <span class="section-index">02 / Stack</span>
-            <span class="label">8 domains · 60+ tools</span>
-          </div>
-          <h2 class="section-title">A stack tuned for shipping AI platforms.</h2>
-        </header>
-
-        <div class="stack-grid">
-          <article class="stack-card" data-reveal>
-            <header class="stack-card__head">
-              <span class="stack-card__idx mono">01</span>
-              <div>
-                <h3 class="stack-card__title">AI &amp; LLM Engineering</h3>
-                <p class="stack-card__desc mono">Agents · orchestration · eval</p>
-              </div>
-            </header>
-            <ul class="stack-card__tags cluster">
-              <li class="tag">Claude API</li><li class="tag">OpenAI</li><li class="tag">Gemini</li>
-              <li class="tag">LangChain</li><li class="tag">LangGraph</li><li class="tag">LlamaIndex</li>
-              <li class="tag">CrewAI</li><li class="tag">Pydantic AI</li><li class="tag">Ollama</li>
-              <li class="tag">vLLM</li><li class="tag">MCP</li>
-            </ul>
-          </article>
-
-          <article class="stack-card" data-reveal>
-            <header class="stack-card__head">
-              <span class="stack-card__idx mono">02</span>
-              <div>
-                <h3 class="stack-card__title">Vector &amp; Retrieval</h3>
-                <p class="stack-card__desc mono">Embeddings · hybrid · RAG</p>
-              </div>
-            </header>
-            <ul class="stack-card__tags cluster">
-              <li class="tag">Pinecone</li><li class="tag">Weaviate</li><li class="tag">Qdrant</li>
-              <li class="tag">Chroma</li><li class="tag">pgvector</li><li class="tag">FAISS</li>
-              <li class="tag">Milvus</li><li class="tag">Hybrid Search</li>
-            </ul>
-          </article>
-
-          <article class="stack-card" data-reveal>
-            <header class="stack-card__head">
-              <span class="stack-card__idx mono">03</span>
-              <div>
-                <h3 class="stack-card__title">Languages</h3>
-                <p class="stack-card__desc mono">Typed · systems · scripting</p>
-              </div>
-            </header>
-            <ul class="stack-card__tags cluster">
-              <li class="tag">TypeScript</li><li class="tag">Python</li><li class="tag">JavaScript</li>
-              <li class="tag">Go</li><li class="tag">Rust</li><li class="tag">SQL</li><li class="tag">Bash</li>
-            </ul>
-          </article>
-
-          <article class="stack-card" data-reveal>
-            <header class="stack-card__head">
-              <span class="stack-card__idx mono">04</span>
-              <div>
-                <h3 class="stack-card__title">Frontend</h3>
-                <p class="stack-card__desc mono">Product surfaces · design systems</p>
-              </div>
-            </header>
-            <ul class="stack-card__tags cluster">
-              <li class="tag">Next.js</li><li class="tag">React</li><li class="tag">React Native</li>
-              <li class="tag">Expo</li><li class="tag">Tailwind CSS</li><li class="tag">shadcn/ui</li>
-              <li class="tag">Framer Motion</li><li class="tag">Radix UI</li>
-            </ul>
-          </article>
-
-          <article class="stack-card" data-reveal>
-            <header class="stack-card__head">
-              <span class="stack-card__idx mono">05</span>
-              <div>
-                <h3 class="stack-card__title">Backend &amp; APIs</h3>
-                <p class="stack-card__desc mono">Services · queues · real-time</p>
-              </div>
-            </header>
-            <ul class="stack-card__tags cluster">
-              <li class="tag">Node.js</li><li class="tag">FastAPI</li><li class="tag">NestJS</li>
-              <li class="tag">tRPC</li><li class="tag">GraphQL</li><li class="tag">gRPC</li>
-              <li class="tag">WebSockets</li><li class="tag">Kafka</li><li class="tag">RabbitMQ</li>
-              <li class="tag">Temporal</li>
-            </ul>
-          </article>
-
-          <article class="stack-card" data-reveal>
-            <header class="stack-card__head">
-              <span class="stack-card__idx mono">06</span>
-              <div>
-                <h3 class="stack-card__title">Data &amp; Storage</h3>
-                <p class="stack-card__desc mono">Relational · cache · analytics</p>
-              </div>
-            </header>
-            <ul class="stack-card__tags cluster">
-              <li class="tag">PostgreSQL</li><li class="tag">Redis</li><li class="tag">MongoDB</li>
-              <li class="tag">Supabase</li><li class="tag">Prisma</li><li class="tag">Drizzle</li>
-              <li class="tag">ClickHouse</li><li class="tag">S3</li>
-            </ul>
-          </article>
-
-          <article class="stack-card" data-reveal>
-            <header class="stack-card__head">
-              <span class="stack-card__idx mono">07</span>
-              <div>
-                <h3 class="stack-card__title">Cloud &amp; Infrastructure</h3>
-                <p class="stack-card__desc mono">Deploy · scale · observe</p>
-              </div>
-            </header>
-            <ul class="stack-card__tags cluster">
-              <li class="tag">AWS</li><li class="tag">GCP</li><li class="tag">Vercel</li>
-              <li class="tag">Cloudflare</li><li class="tag">Docker</li><li class="tag">Kubernetes</li>
-              <li class="tag">Terraform</li><li class="tag">GitHub Actions</li>
-            </ul>
-          </article>
-
-          <article class="stack-card" data-reveal>
-            <header class="stack-card__head">
-              <span class="stack-card__idx mono">08</span>
-              <div>
-                <h3 class="stack-card__title">Architecture</h3>
-                <p class="stack-card__desc mono">Patterns at platform scale</p>
-              </div>
-            </header>
-            <ul class="stack-card__tags cluster">
-              <li class="tag">Multi-Tenant SaaS</li><li class="tag">Microservices</li>
-              <li class="tag">Event-Driven</li><li class="tag">CQRS</li><li class="tag">DDD</li>
-              <li class="tag">Agent Orchestration</li><li class="tag">RAG Pipelines</li>
-              <li class="tag">Observability</li>
-            </ul>
-          </article>
-        </div>
       </div>
     </section>
 
@@ -414,7 +308,7 @@
       <div class="container">
         <header class="section-head section-head--wide" data-reveal>
           <div class="section-head__row">
-            <span class="section-index">03 / Work</span>
+            <span class="section-index">02 / Work</span>
             <span class="label">2018 → now</span>
           </div>
           <h2 class="section-title">Selected work &amp; ventures.</h2>
@@ -424,7 +318,7 @@
           <li class="tl-item tl-item--current" data-reveal>
             <div class="tl-date mono"><b>2025</b><span class="t-accent">NOW</span></div>
             <div class="tl-rail" aria-hidden="true"><span class="tl-dot"></span></div>
-            <div class="tl-body">
+            <div class="tl-body glass-panel">
               <div class="tl-head">
                 <h3 class="tl-title">Founder &amp; Software Engineer</h3>
                 <span class="badge">Current</span>
@@ -441,7 +335,7 @@
           <li class="tl-item tl-item--current" data-reveal>
             <div class="tl-date mono"><b>2024</b><span class="t-accent">NOW</span></div>
             <div class="tl-rail" aria-hidden="true"><span class="tl-dot"></span></div>
-            <div class="tl-body">
+            <div class="tl-body glass-panel">
               <div class="tl-head">
                 <h3 class="tl-title">Project Manager &amp; Product Architect</h3>
                 <span class="badge">Current</span>
@@ -458,7 +352,7 @@
           <li class="tl-item" data-reveal>
             <div class="tl-date mono"><b>2023</b><span>2024</span></div>
             <div class="tl-rail" aria-hidden="true"><span class="tl-dot"></span></div>
-            <div class="tl-body">
+            <div class="tl-body glass-panel">
               <h3 class="tl-title">Rehlat Uhud</h3>
               <p class="tl-org mono">Founder · Online travel platform</p>
               <p class="tl-desc">
@@ -471,7 +365,7 @@
           <li class="tl-item" data-reveal>
             <div class="tl-date mono"><b>2022</b><span>2024</span></div>
             <div class="tl-rail" aria-hidden="true"><span class="tl-dot"></span></div>
-            <div class="tl-body">
+            <div class="tl-body glass-panel">
               <h3 class="tl-title">Tourel Tourism</h3>
               <p class="tl-org mono">Founder · Tourism technology</p>
               <p class="tl-desc">
@@ -484,7 +378,7 @@
           <li class="tl-item" data-reveal>
             <div class="tl-date mono"><b>2020</b></div>
             <div class="tl-rail" aria-hidden="true"><span class="tl-dot"></span></div>
-            <div class="tl-body">
+            <div class="tl-body glass-panel">
               <h3 class="tl-title">Al Rayah</h3>
               <p class="tl-org mono">Founder · Delivery platform</p>
               <p class="tl-desc">
@@ -496,7 +390,7 @@
           <li class="tl-item" data-reveal>
             <div class="tl-date mono"><b>2018</b><span>2020</span></div>
             <div class="tl-rail" aria-hidden="true"><span class="tl-dot"></span></div>
-            <div class="tl-body">
+            <div class="tl-body glass-panel">
               <h3 class="tl-title">Kayan Beauty</h3>
               <p class="tl-org mono">Founder · Beauty technology</p>
               <p class="tl-desc">
@@ -506,6 +400,185 @@
             </div>
           </li>
         </ol>
+      </div>
+    </section>
+
+    <!-- ====================== STACK ====================== -->
+    <section class="section stack" id="stack">
+      <div class="container">
+        <header class="section-head section-head--wide" data-reveal>
+          <div class="section-head__row">
+            <span class="section-index">03 / Stack</span>
+            <span class="label">8 domains · 60+ tools</span>
+          </div>
+          <h2 class="section-title">A stack tuned for shipping AI platforms.</h2>
+        </header>
+
+        <div class="stack-grid">
+          <article class="stack-card glass-panel" data-reveal data-tilt>
+            <header class="stack-card__head">
+              <span class="stack-card__idx mono">01</span>
+              <div>
+                <h3 class="stack-card__title">AI &amp; LLM Engineering</h3>
+                <p class="stack-card__desc mono">Agents · orchestration · eval</p>
+              </div>
+            </header>
+            <ul class="stack-card__tags cluster">
+              <li class="tag">Claude API</li>
+              <li class="tag">OpenAI</li>
+              <li class="tag">Gemini</li>
+              <li class="tag">LangChain</li>
+              <li class="tag">LangGraph</li>
+              <li class="tag">LlamaIndex</li>
+              <li class="tag">CrewAI</li>
+              <li class="tag">Pydantic AI</li>
+              <li class="tag">Ollama</li>
+              <li class="tag">vLLM</li>
+              <li class="tag">MCP</li>
+            </ul>
+          </article>
+
+          <article class="stack-card glass-panel" data-reveal data-tilt>
+            <header class="stack-card__head">
+              <span class="stack-card__idx mono">02</span>
+              <div>
+                <h3 class="stack-card__title">Vector &amp; Retrieval</h3>
+                <p class="stack-card__desc mono">Embeddings · hybrid · RAG</p>
+              </div>
+            </header>
+            <ul class="stack-card__tags cluster">
+              <li class="tag">Pinecone</li>
+              <li class="tag">Weaviate</li>
+              <li class="tag">Qdrant</li>
+              <li class="tag">Chroma</li>
+              <li class="tag">pgvector</li>
+              <li class="tag">FAISS</li>
+              <li class="tag">Milvus</li>
+              <li class="tag">Hybrid Search</li>
+            </ul>
+          </article>
+
+          <article class="stack-card glass-panel" data-reveal data-tilt>
+            <header class="stack-card__head">
+              <span class="stack-card__idx mono">03</span>
+              <div>
+                <h3 class="stack-card__title">Languages</h3>
+                <p class="stack-card__desc mono">Typed · systems · scripting</p>
+              </div>
+            </header>
+            <ul class="stack-card__tags cluster">
+              <li class="tag">TypeScript</li>
+              <li class="tag">Python</li>
+              <li class="tag">JavaScript</li>
+              <li class="tag">Go</li>
+              <li class="tag">Rust</li>
+              <li class="tag">SQL</li>
+              <li class="tag">Bash</li>
+            </ul>
+          </article>
+
+          <article class="stack-card glass-panel" data-reveal data-tilt>
+            <header class="stack-card__head">
+              <span class="stack-card__idx mono">04</span>
+              <div>
+                <h3 class="stack-card__title">Frontend</h3>
+                <p class="stack-card__desc mono">Product surfaces · design systems</p>
+              </div>
+            </header>
+            <ul class="stack-card__tags cluster">
+              <li class="tag">Next.js</li>
+              <li class="tag">React</li>
+              <li class="tag">React Native</li>
+              <li class="tag">Expo</li>
+              <li class="tag">Tailwind CSS</li>
+              <li class="tag">shadcn/ui</li>
+              <li class="tag">Framer Motion</li>
+              <li class="tag">Radix UI</li>
+            </ul>
+          </article>
+
+          <article class="stack-card glass-panel" data-reveal data-tilt>
+            <header class="stack-card__head">
+              <span class="stack-card__idx mono">05</span>
+              <div>
+                <h3 class="stack-card__title">Backend &amp; APIs</h3>
+                <p class="stack-card__desc mono">Services · queues · real-time</p>
+              </div>
+            </header>
+            <ul class="stack-card__tags cluster">
+              <li class="tag">Node.js</li>
+              <li class="tag">FastAPI</li>
+              <li class="tag">NestJS</li>
+              <li class="tag">tRPC</li>
+              <li class="tag">GraphQL</li>
+              <li class="tag">gRPC</li>
+              <li class="tag">WebSockets</li>
+              <li class="tag">Kafka</li>
+              <li class="tag">RabbitMQ</li>
+              <li class="tag">Temporal</li>
+            </ul>
+          </article>
+
+          <article class="stack-card glass-panel" data-reveal data-tilt>
+            <header class="stack-card__head">
+              <span class="stack-card__idx mono">06</span>
+              <div>
+                <h3 class="stack-card__title">Data &amp; Storage</h3>
+                <p class="stack-card__desc mono">Relational · cache · analytics</p>
+              </div>
+            </header>
+            <ul class="stack-card__tags cluster">
+              <li class="tag">PostgreSQL</li>
+              <li class="tag">Redis</li>
+              <li class="tag">MongoDB</li>
+              <li class="tag">Supabase</li>
+              <li class="tag">Prisma</li>
+              <li class="tag">Drizzle</li>
+              <li class="tag">ClickHouse</li>
+              <li class="tag">S3</li>
+            </ul>
+          </article>
+
+          <article class="stack-card glass-panel" data-reveal data-tilt>
+            <header class="stack-card__head">
+              <span class="stack-card__idx mono">07</span>
+              <div>
+                <h3 class="stack-card__title">Cloud &amp; Infrastructure</h3>
+                <p class="stack-card__desc mono">Deploy · scale · observe</p>
+              </div>
+            </header>
+            <ul class="stack-card__tags cluster">
+              <li class="tag">AWS</li>
+              <li class="tag">GCP</li>
+              <li class="tag">Vercel</li>
+              <li class="tag">Cloudflare</li>
+              <li class="tag">Docker</li>
+              <li class="tag">Kubernetes</li>
+              <li class="tag">Terraform</li>
+              <li class="tag">GitHub Actions</li>
+            </ul>
+          </article>
+
+          <article class="stack-card glass-panel" data-reveal data-tilt>
+            <header class="stack-card__head">
+              <span class="stack-card__idx mono">08</span>
+              <div>
+                <h3 class="stack-card__title">Architecture</h3>
+                <p class="stack-card__desc mono">Patterns at platform scale</p>
+              </div>
+            </header>
+            <ul class="stack-card__tags cluster">
+              <li class="tag">Multi-Tenant SaaS</li>
+              <li class="tag">Microservices</li>
+              <li class="tag">Event-Driven</li>
+              <li class="tag">CQRS</li>
+              <li class="tag">DDD</li>
+              <li class="tag">Agent Orchestration</li>
+              <li class="tag">RAG Pipelines</li>
+              <li class="tag">Observability</li>
+            </ul>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -521,12 +594,12 @@
           <div class="bg-col" data-reveal>
             <p class="label bg-col__kicker">Education</p>
             <ul class="edu">
-              <li class="edu__item">
+              <li class="edu__item glass-panel">
                 <div class="edu__date mono">2022 — Present</div>
                 <h3 class="edu__title">B.Sc. Software Engineering</h3>
                 <p class="edu__org mono">Üsküdar University · Istanbul</p>
               </li>
-              <li class="edu__item">
+              <li class="edu__item glass-panel">
                 <div class="edu__date mono">2018 — Ongoing</div>
                 <h3 class="edu__title">Self-directed engineering</h3>
                 <p class="edu__org mono">Building · shipping · failing · iterating</p>
@@ -579,6 +652,7 @@
 
     <!-- ====================== CONTACT ====================== -->
     <section class="section contact" id="contact">
+      <div class="dim-floor dim-floor--dim" aria-hidden="true"></div>
       <div class="container">
         <header class="section-head" data-reveal>
           <span class="section-index">05 / Contact</span>
@@ -603,7 +677,7 @@
             </div>
           </div>
 
-          <div class="contact__links" data-reveal>
+          <div class="contact__links glass-panel" data-reveal data-tilt>
             <a class="contact-row" href="mailto:waleedkuzi@gmail.com">
               <span class="contact-row__key mono">Email</span>
               <span class="contact-row__val">waleedkuzi@gmail.com</span>
@@ -641,7 +715,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <span class="mono t-faint">© <span data-year>2026</span> Waleed Mohammad Rahim</span>
-      <span class="mono t-faint">Designed &amp; built in Istanbul · Blueprint v2</span>
+      <span class="mono t-faint">Designed &amp; built in Istanbul · Blueprint Dimensional · v4</span>
     </div>
   </footer>
 

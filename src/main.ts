@@ -1,10 +1,10 @@
 /**
- * Portfolio v2 — entry point.
+ * Portfolio v4 — entry point.
  *
- * Boots the design-system styles and wires up navigation, theme, and the
- * mobile menu. The smooth-scroll + reveal motion system and the lazily-loaded
- * WebGL "system schematic" centerpiece are added in later commits. Kept small:
- * heavy work is code-split and deferred so first paint stays fast.
+ * Boots the design-system styles and wires up navigation, theme, the mobile
+ * menu, and the native reveal/tilt motion system. The zero-dependency
+ * "system isometric" hero renderer is code-split and lazily mounted so first
+ * paint stays fast.
  */
 
 // Self-hosted fonts (subset by unicode-range; only used ranges download).
@@ -12,27 +12,16 @@ import '@fontsource-variable/space-grotesk/index.css'
 import '@fontsource-variable/jetbrains-mono/index.css'
 import '@fontsource/geist-sans/400.css'
 import '@fontsource/geist-sans/500.css'
-import '@fontsource/geist-sans/600.css'
 
 import './styles/index.css'
 
 import { initTheme } from './ui/theme'
 import { initNav } from './ui/nav'
 import { initMenu } from './ui/menu'
-import { initSmoothScroll } from './motion/lenis'
 import { initReveals } from './motion/reveal'
 import { initMicro } from './motion/micro'
 
-function webglSupported(): boolean {
-  try {
-    const canvas = document.createElement('canvas')
-    return !!(window.WebGLRenderingContext && (canvas.getContext('webgl2') || canvas.getContext('webgl')))
-  } catch {
-    return false
-  }
-}
-
-/** Lazily load the WebGL schematic, but only when it's worth it. */
+/** Lazily load the dimensional schematic, but only when it's worth it. */
 function mountSchematic(): void {
   const viz = document.querySelector<HTMLElement>('[data-viz]')
   if (!viz) return
@@ -40,13 +29,13 @@ function mountSchematic(): void {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData
   const smallTouch = window.matchMedia('(pointer: coarse)').matches && window.innerWidth < 640
-  // Keep the static SVG fallback when motion/WebGL aren't appropriate.
-  if (reduceMotion || saveData || smallTouch || !webglSupported()) return
+  // Keep the static SVG fallback when motion isn't appropriate.
+  if (reduceMotion || saveData || smallTouch) return
 
   const observer = new IntersectionObserver((entries, obs) => {
     if (!entries.some((e) => e.isIntersecting)) return
     obs.disconnect()
-    void import('./three').then((m) => m.initSchematic(viz)).catch(() => {})
+    void import('./dimensional').then((m) => m.initDimensional(viz)).catch(() => {})
   })
   observer.observe(viz)
 }
@@ -55,8 +44,7 @@ function boot(): void {
   initTheme()
   initNav()
   initMenu()
-  const lenis = initSmoothScroll()
-  initReveals(lenis)
+  initReveals()
   initMicro()
   mountSchematic()
 

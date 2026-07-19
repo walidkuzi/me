@@ -47,23 +47,25 @@
 .stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--hair);
-  background: var(--line);
-  border: var(--hair) solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
+  gap: var(--space-sm);
 }
 
 .stat {
   display: grid;
   gap: var(--space-xs);
   padding: clamp(1.25rem, 3vw, 2rem);
-  background: var(--surface);
-  transition: background var(--dur-1) var(--ease-out);
+  transition: translate var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out);
+}
+
+/* Alternating float heights read as a stepped relief. */
+.stat:nth-child(even) {
+  translate: 0 -4px;
+  box-shadow: var(--shadow-z2);
 }
 
 .stat:hover {
-  background: var(--surface-2);
+  translate: 0 -7px;
+  box-shadow: var(--shadow-z2);
 }
 
 .stat__num {

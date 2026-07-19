@@ -2,7 +2,7 @@
  * Small, GPU-cheap interactions:
  *  - count-up for [data-count] stats when they scroll into view,
  *  - magnetic buttons that drift toward the pointer,
- *  - a subtle parallax tilt on stack cards.
+ *  - a subtle parallax tilt on [data-tilt] panels.
  * Pointer effects only run on fine pointers and never under reduced motion.
  */
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -64,16 +64,22 @@ function initMagnetic(): void {
   })
 }
 
+/**
+ * Tilt writes --rx/--ry custom properties (composed into a transform by CSS)
+ * rather than style.transform, so it can't stomp reveal/perspective styles.
+ */
 function initTilt(): void {
-  document.querySelectorAll<HTMLElement>('.stack-card').forEach((card) => {
+  document.querySelectorAll<HTMLElement>('[data-tilt]').forEach((card) => {
     card.addEventListener('pointermove', (e) => {
       const r = card.getBoundingClientRect()
       const px = (e.clientX - r.left) / r.width - 0.5
       const py = (e.clientY - r.top) / r.height - 0.5
-      card.style.transform = `perspective(720px) rotateX(${-py * 3.5}deg) rotateY(${px * 4.5}deg)`
+      card.style.setProperty('--rx', `${-py * 4}deg`)
+      card.style.setProperty('--ry', `${px * 5}deg`)
     })
     card.addEventListener('pointerleave', () => {
-      card.style.transform = ''
+      card.style.removeProperty('--rx')
+      card.style.removeProperty('--ry')
     })
   })
 }

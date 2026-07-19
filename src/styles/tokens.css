@@ -53,6 +53,12 @@
   --radius-lg: 4px;
   --grid-cell: 80px;      /* background graph-paper module */
 
+  /* ---- Depth (dimensional system) ---- */
+  --persp: 1100px;        /* shared perspective for tilt stages */
+  --lift-1: 10px;
+  --lift-2: 24px;
+  --lift-3: 44px;
+
   /* ---- Motion ---- */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
@@ -105,6 +111,13 @@
   --glow: 0 0 48px -12px var(--accent-glow);
   --noise-opacity: 0.028;
 
+  /* Dimensional: frosted glass + lit edge + elevation tiers */
+  --glass: color-mix(in srgb, var(--surface) 58%, transparent);
+  --glass-edge: linear-gradient(135deg, var(--accent-line), rgba(110, 168, 255, 0.16) 38%, var(--line) 70%);
+  --shadow-z1: 0 1px 0 rgba(255, 255, 255, 0.03), 0 6px 18px rgba(0, 0, 0, 0.35);
+  --shadow-z2: 0 1px 0 rgba(255, 255, 255, 0.04), 0 14px 34px rgba(0, 0, 0, 0.45);
+  --shadow-z3: 0 1px 0 rgba(255, 255, 255, 0.05), 0 26px 60px rgba(0, 0, 0, 0.55);
+
   color-scheme: dark;
 }
 
@@ -139,6 +152,13 @@
   --shadow: 0 1px 2px rgba(20, 40, 70, 0.06), 0 16px 40px rgba(20, 40, 70, 0.08);
   --glow: 0 0 40px -16px var(--accent-glow);
   --noise-opacity: 0.02;
+
+  /* Dimensional: frosted paper + lit edge + elevation tiers */
+  --glass: color-mix(in srgb, #ffffff 80%, transparent);
+  --glass-edge: linear-gradient(135deg, rgba(14, 143, 126, 0.35), rgba(47, 109, 240, 0.14) 38%, var(--line) 70%);
+  --shadow-z1: 0 1px 2px rgba(20, 40, 70, 0.05), 0 6px 16px rgba(20, 40, 70, 0.07);
+  --shadow-z2: 0 2px 3px rgba(20, 40, 70, 0.06), 0 14px 30px rgba(20, 40, 70, 0.1);
+  --shadow-z3: 0 2px 4px rgba(20, 40, 70, 0.07), 0 26px 54px rgba(20, 40, 70, 0.13);
 
   color-scheme: light;
 }

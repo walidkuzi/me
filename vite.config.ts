@@ -7,8 +7,5 @@ export default defineConfig({
   build: {
     target: 'es2022',
     cssTarget: 'chrome111',
-    // Three.js is heavy; keep it in its own lazily-loaded chunk so it never
-    // blocks first paint. The dynamic import() in src/three keeps it split.
-    chunkSizeWarningLimit: 900,
   },
 })

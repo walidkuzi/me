@@ -1,0 +1,82 @@
+/* ============================================================
+   DIMENSIONAL — the depth layer of the blueprint system
+   Glass panels with lit hairline edges, perspective stages, and
+   receding grid floors. Reads only theme tokens, so dark
+   ("backlit drafting table") and light ("draft on paper") both
+   work untouched.
+   ============================================================ */
+
+/* ---- Glass panel with a lit edge ----
+   Double-background technique: the padding-box layer is the
+   frosted fill, the border-box layer paints the 1px edge
+   gradient. No pseudo-elements, so it composes with
+   .corner-marks, .stack-card and friends. */
+.glass-panel {
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(var(--glass), var(--glass)) padding-box,
+    var(--glass-edge) border-box;
+  box-shadow: var(--shadow-z1);
+}
+
+/* ---- Perspective stage: descendants tilt/lift in shared 3D ---- */
+.z-stage {
+  perspective: var(--persp);
+}
+
+/* ---- Receding grid floor ----
+   A strip laid down in 3D: rotated away from the viewer, fading
+   out toward the vanishing point, light pooling at the near
+   edge. Purely decorative. */
+.dim-floor {
+  position: absolute;
+  left: -12%;
+  right: -12%;
+  bottom: -3.5rem;
+  height: 44vh;
+  pointer-events: none;
+  z-index: 0;
+  transform: perspective(700px) rotateX(62deg);
+  transform-origin: 50% 100%;
+  background:
+    radial-gradient(58% 42% at 50% 100%, var(--accent-soft), transparent 72%),
+    repeating-linear-gradient(to right, var(--line-grid) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(to top, var(--line-grid) 0 1px, transparent 1px 56px);
+  -webkit-mask-image: linear-gradient(to top, #000 18%, transparent 80%);
+  mask-image: linear-gradient(to top, #000 18%, transparent 80%);
+}
+
+/* Scroll-driven drift: the floor glides beneath you as you
+   scroll. Progressive enhancement — simply static elsewhere. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .dim-floor {
+      animation: dim-floor-drift linear both;
+      animation-timeline: view();
+    }
+  }
+}
+
+@keyframes dim-floor-drift {
+  from {
+    background-position: 0 0, 0 0, 0 0;
+  }
+
+  to {
+    background-position: 0 0, -28px 0, 0 56px;
+  }
+}
+
+/* ---- Frosted surfaces (blur budget: nav + hero viz ONLY) ---- */
+.glass-frost {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-frost {
+    background-color: color-mix(in srgb, var(--surface) 88%, transparent);
+  }
+}
