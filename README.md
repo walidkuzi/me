@@ -56,9 +56,14 @@ npm run cv         # rebuild the PDF CV → public/Waleed-Rahim-CV.pdf (needs `t
 │   ├── motion/             # reveal, micro
 │   └── ui/                 # nav, theme, menu
 ├── cv/                     # Typst CV source + vendored fonts
+├── docs/                   # research + working notes — NOT part of the build
 ├── public/                 # favicon, og image, CV pdf, robots, sitemap
 └── .github/workflows/      # build + deploy to Pages
 ```
+
+> **`docs/` never reaches the site.** Vite's only inputs are `index.html`, `src/` and
+> `public/`, so markdown under `docs/` is not bundled, routed, linked or indexed — it is
+> repository-only material. See [`docs/README.md`](docs/README.md).
 
 ## Deployment
 
